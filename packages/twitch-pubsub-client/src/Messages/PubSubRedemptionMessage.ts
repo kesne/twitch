@@ -2,26 +2,28 @@ import { NonEnumerable } from '../Toolkit/Decorators';
 import TwitchClient from 'twitch';
 
 export interface PubSubRedemptionMessageData {
-	timestamp: string;
-	redemption: {
-		id: string;
-		reward: {
+	data: {
+		timestamp: string;
+		redemption: {
 			id: string;
+			reward: {
+				id: string;
+				channel_id: string;
+				title: string;
+				prompt: string;
+				cost: number;
+				is_user_input_required: boolean;
+				is_sub_only: boolean;
+			};
+			user: {
+				id: string;
+				display_name: string;
+			};
 			channel_id: string;
-			title: string;
-			prompt: string;
-			cost: number;
-			is_user_input_required: boolean;
-			is_sub_only: boolean;
+			redeemed_at: string;
+			user_input?: string;
+			status: 'FULFILLED' | 'UNFULFILLED';
 		};
-		user: {
-			id: string;
-			display_name: string;
-		};
-		channel_id: string;
-		redeemed_at: string;
-		user_input?: string;
-		status: 'FULFILLED' | 'UNFULFILLED';
 	};
 }
 
@@ -38,18 +40,18 @@ export default class PubSubRedemptionMessage {
 	}
 
 	get rewardId() {
-		return this._data.redemption.reward.id;
+		return this._data.data.redemption.reward.id;
 	}
 
 	get userInput() {
-		return this._data.redemption.user_input;
+		return this._data.data.redemption.user_input;
 	}
 
 	get userId() {
-		return this._data.redemption.user.id;
+		return this._data.data.redemption.user.id;
 	}
 
 	get userName() {
-		return this._data.redemption.user.display_name;
+		return this._data.data.redemption.user.display_name;
 	}
 }
