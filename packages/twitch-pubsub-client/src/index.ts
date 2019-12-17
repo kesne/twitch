@@ -14,13 +14,15 @@ import PubSubBitsMessage from './Messages/PubSubBitsMessage';
 import PubSubBitsBadgeUnlockMessage from './Messages/PubSubBitsBadgeUnlockMessage';
 import PubSubSubscriptionMessage from './Messages/PubSubSubscriptionMessage';
 import PubSubWhisperMessage from './Messages/PubSubWhisperMessage';
+import PubSubRedemptionMessages from './Messages/PubSubRedemptionMessage';
 
 export {
 	PubSubMessage,
 	PubSubBitsMessage,
 	PubSubBitsBadgeUnlockMessage,
 	PubSubSubscriptionMessage,
-	PubSubWhisperMessage
+	PubSubWhisperMessage,
+	PubSubRedemptionMessages
 };
 
 import { LogLevel } from '@d-fischer/logger';

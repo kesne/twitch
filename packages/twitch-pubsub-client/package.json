@@ -1,5 +1,5 @@
 {
-  "name": "twitch-pubsub-client",
+  "name": "@jordangens/twitch-pubsub-client",
   "version": "3.5.9",
   "description": "Listen to events using the Twitch PubSub interface.",
   "keywords": [

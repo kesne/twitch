@@ -3,6 +3,7 @@ import PubSubBitsBadgeUnlockMessage, { PubSubBitsBadgeUnlockMessageData } from '
 import PubSubChatModActionMessage, { PubSubChatModActionMessageData } from './PubSubChatModActionMessage';
 import PubSubSubscriptionMessage, { PubSubSubscriptionMessageData } from './PubSubSubscriptionMessage';
 import PubSubWhisperMessage, { PubSubWhisperMessageData } from './PubSubWhisperMessage';
+import PubSubRedemptionMessage, { PubSubRedemptionMessageData } from './PubSubRedemptionMessage';
 
 export interface PubSubBasicMessageInfo {
 	user_name: string;
@@ -33,7 +34,8 @@ type PubSubMessageData =
 	| PubSubBitsBadgeUnlockMessageData
 	| PubSubChatModActionMessageData
 	| PubSubSubscriptionMessageData
-	| PubSubWhisperMessageData;
+	| PubSubWhisperMessageData
+	| PubSubRedemptionMessageData;
 export { PubSubMessageData };
 
 type PubSubMessage =
@@ -41,5 +43,6 @@ type PubSubMessage =
 	| PubSubBitsBadgeUnlockMessage
 	| PubSubChatModActionMessage
 	| PubSubSubscriptionMessage
-	| PubSubWhisperMessage;
+	| PubSubWhisperMessage
+	| PubSubRedemptionMessage;
 export default PubSubMessage;

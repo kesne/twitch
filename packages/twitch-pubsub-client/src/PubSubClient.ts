@@ -7,6 +7,7 @@ import PubSubBitsBadgeUnlockMessage from './Messages/PubSubBitsBadgeUnlockMessag
 import PubSubChatModActionMessage from './Messages/PubSubChatModActionMessage';
 import PubSubSubscriptionMessage from './Messages/PubSubSubscriptionMessage';
 import PubSubWhisperMessage from './Messages/PubSubWhisperMessage';
+import PubSubRedemptionMessage from './Messages/PubSubRedemptionMessage';
 
 export default class PubSubClient {
 	@NonEnumerable private readonly _rootClient = new BasicPubSubClient();
@@ -52,6 +53,10 @@ export default class PubSubClient {
 
 	async onWhisper(user: UserIdResolvable, callback: (message: PubSubWhisperMessage) => void) {
 		return this.getUserListener(user).onWhisper(callback);
+	}
+
+	async onRedemption(user: UserIdResolvable, callback: (message: PubSubRedemptionMessage) => void) {
+		return this.getUserListener(user).onRedemption(callback);
 	}
 
 	async onModAction(

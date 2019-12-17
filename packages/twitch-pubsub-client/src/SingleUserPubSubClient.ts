@@ -11,6 +11,7 @@ import PubSubSubscriptionMessage, { PubSubSubscriptionMessageData } from './Mess
 import PubSubWhisperMessage, { PubSubWhisperMessageData } from './Messages/PubSubWhisperMessage';
 import PubSubMessage from './Messages/PubSubMessage';
 import { LogLevel } from '@d-fischer/logger';
+import PubSubRedemptionMessage, { PubSubRedemptionMessageData } from './Messages/PubSubRedemptionMessage';
 
 /**
  * Options for creating the single-user PubSub client.
@@ -54,6 +55,13 @@ export default class SingleUserPubSubClient {
 			if (this._listeners.has(type)) {
 				let message: PubSubMessage;
 				switch (type) {
+					case 'channel-points-channel-v1': {
+						message = new PubSubRedemptionMessage(
+							messageData as PubSubRedemptionMessageData,
+							this._twitchClient
+						);
+						break;
+					}
 					case 'channel-bits-events-v2': {
 						message = new PubSubBitsMessage(messageData as PubSubBitsMessageData, this._twitchClient);
 						break;
@@ -136,6 +144,10 @@ export default class SingleUserPubSubClient {
 	 */
 	async onWhisper(callback: (message: PubSubWhisperMessage) => void) {
 		return this._addListener('whispers', callback, 'whispers:read');
+	}
+
+	async onRedemption(callback: (message: PubSubRedemptionMessage) => void) {
+		return this._addListener('channel-points-channel-v1', callback, 'channel:read:redemptions');
 	}
 
 	/**
