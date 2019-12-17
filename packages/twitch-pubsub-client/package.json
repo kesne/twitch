@@ -37,5 +37,9 @@
   "scripts": {
     "build": "tsc",
     "rebuild": "rimraf lib && yarn run build"
-  }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "e62168c3002211d082d7f4eb86857faf4933ff16"
 }
