@@ -43,6 +43,10 @@ export default class PubSubRedemptionMessage {
 		return this._data.data.redemption.reward.id;
 	}
 
+	get redemptionId() {
+		return this._data.data.redemption.id;
+	}
+
 	get userInput() {
 		return this._data.data.redemption.user_input;
 	}
